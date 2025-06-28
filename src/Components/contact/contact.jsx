@@ -13,14 +13,18 @@ const contact = () => {
                 <div className="Contact-form">
                     <p>Get in touch</p>
                     <div className="contact-inp">
-                    <input type="text" placeholder='Your Name'/>
+                        <input type="text" placeholder='Your Name' />
                     </div>
                     <div className="contact-inp">
-                    <input type="email" placeholder='Your Email'/>
+                        <input type="email" placeholder='Your Email' />
                     </div>
                     <div className="contact-inp">
-                    <input type="password" placeholder='Your Password'/>
+                        <input type="password" placeholder='Your Password' />
                     </div>
+                    <div className="contact-inp">
+                        <textarea cols="60" rows="5"></textarea>
+                    </div>
+                    <button>Submit</button>
                 </div>
             </div>
         </>

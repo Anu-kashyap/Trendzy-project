@@ -23,7 +23,7 @@ const Navbar = () => {
         <Link to="/"><li>Home</li></Link>
         <Link to="#"><li>Collection</li></Link>
         <Link to="/about"><li>About</li></Link>
-        <Link to="#"><li>Contact</li></Link>
+        <Link to="/contact"><li>Contact</li></Link>
 
         <div className="icons-mobile">
           {!showSearch && (

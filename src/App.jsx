@@ -7,6 +7,7 @@ import Service from './Components/Service/Service';
 import About from './Components/About/About';
 import Login from './Components/login/login'
 import Collection from './Components/collection/collection'
+import Contact from './Components/contact/contact'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/" element={<><Hero /><Collection/><Service /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </>

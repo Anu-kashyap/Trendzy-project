@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 20px;
+    color: white;
+}
+
+nav .logo {
+    font-family: "Bona Nova SC", serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a li {
+    list-style: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.nav-links a li:hover{
+    border-bottom: 1px solid white;
+}
+
+.icon {
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.Searchbar {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.Searchbar input {
+    width: 300px;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+.Searchbar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Icons inside menu on mobile */
+.icons-mobile {
+    /* display: none; */
+    flex-direction: row;
+    gap: 3rem;
+    margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 30px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-top: 10px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .icons-mobile {
+        display: flex;
+    }
+}

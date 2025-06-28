@@ -1,0 +1,66 @@
+.login {
+    height: 60vh;
+    width: 100%;
+    text-align: center;
+    padding-top: 10rem;
+    line-height: 2rem;
+}
+
+.login p {
+    font-size: 30px;
+}
+
+.input-box {
+    line-height: 4rem;
+}
+
+.input-box input {
+    width: 25rem;
+    padding: 0.5rem;
+    font-size: 20px;
+}
+
+.create-account {
+    text-align: center;
+    align-items: center;
+}
+
+.create-account p {
+    font-size: 18px;
+}
+
+.login button {
+    font-size: 20px;
+    color: white;
+    width: 15rem;
+    padding: 10px;
+    background: black;
+    border: none;
+    cursor: pointer;
+}
+
+.Sign {
+    height: 70vh;
+    width: 100%;
+    text-align: center;
+    padding-top: 10rem;
+    line-height: 2rem;
+}
+
+.Sign p {
+    font-size: 30px;
+}
+
+.login-here p {
+    font-size: 15px;
+}
+
+.Sign button {
+    font-size: 20px;
+    color: white;
+    width: 15rem;
+    padding: 10px;
+    background: black;
+    border: none;
+    cursor: pointer;
+}

@@ -4,7 +4,7 @@ import { signupValidation, loginValidation } from '../Middlewares/AuthValidation
 
 const router = express.Router();
 
-router.post('/login', loginValidation, login);
+router.get('/login', loginValidation, login);
 router.post('/signup', signupValidation, signup);
 
 export default router;

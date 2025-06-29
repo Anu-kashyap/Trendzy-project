@@ -1,7 +1,57 @@
-.contact {
+.Contact {
     width: 80%;
     margin-left: 10%;
     height: auto;
     display: flex;
-    justify-content: space-around;
+    margin-top: 2rem;
+    gap: 3rem;
+}
+
+.Contact-title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 6rem;
+}
+
+.contact-image{
+    width: 50%;
+    height: 51vh;
+    background: url(./../../assets/contact.png);
+    overflow: hidden;
+    background-size: cover;
+   background-position: center;
+}
+
+.Contact-form{
+    width: 50%;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.Contact-form p{
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.contact-inp input, textarea{
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 0.2rem;
+    border: none;
+    font-size: 17px;
+}
+
+.Contact button{
+    background: black;
+    color: white;
+    border: none;padding: 0.1rem;
+    font-size: 20px;
+    border-radius: 0.2rem;
+}
+
+.Contact button:hover{
+    background: white;
+    color: black;
+    border: 0.9px solid black;
 }

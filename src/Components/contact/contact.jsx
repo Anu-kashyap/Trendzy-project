@@ -5,11 +5,9 @@ import Image from "./../../assets/contact.png";
 const contact = () => {
     return (
         <>
+            <p className='Contact-title'>Contact US</p>
             <div className='Contact'>
-                <p>Contact US</p>
-                <div className="contact-image">
-                    <img src={Image} alt="" />
-                </div>
+                <div className="contact-image"></div>
                 <div className="Contact-form">
                     <p>Get in touch</p>
                     <div className="contact-inp">
@@ -22,7 +20,7 @@ const contact = () => {
                         <input type="password" placeholder='Your Password' />
                     </div>
                     <div className="contact-inp">
-                        <textarea cols="60" rows="5"></textarea>
+                        <textarea cols="60" rows="5" placeholder='Your Message'></textarea>
                     </div>
                     <button>Submit</button>
                 </div>

@@ -4,24 +4,23 @@ import './login.css';
 const Login = () => {
   const [showLogin, setShowLogin] = useState(true);
 
-  // 🔴 Login form states
+ 
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
-  // 🔵 Signup form states
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
 
-  // ✅ Handle Login
+  
   const handleLogin = () => {
-    console.log('🔴 Login Data:', {
+    console.log('Login Data:', {
       email: loginEmail,
       password: loginPassword,
     });
   };
 
-  // ✅ Handle Signup
+
   const handleSignup = () => {
     console.log('🔵 Signup Data:', {
       name: signupName,

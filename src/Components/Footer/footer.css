@@ -43,9 +43,14 @@ ul li {
 
 @media (max-width: 768px) {
     .footer-section {
-        display: grid;
         grid-template-columns: auto;
-        height: 130vh;
+        height: 140vh;
+        gap: 0;
+        padding: 0;
+    }
+
+    .footer-logo h1{
+        text-align: center;
     }
 
     .footer-logo p{
@@ -57,7 +62,7 @@ ul li {
     .footer-content-first {
         display: block;
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 11rem;
     }
 
     .footer-content-second{

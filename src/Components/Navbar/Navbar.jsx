@@ -21,7 +21,7 @@ const Navbar = () => {
 
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <Link to="/"><li>Home</li></Link>
-        <Link to="#"><li>Collection</li></Link>
+        <Link to="/product"><li>Collection</li></Link>
         <Link to="/about"><li>About</li></Link>
         <Link to="/contact"><li>Contact</li></Link>
 
@@ -32,7 +32,7 @@ const Navbar = () => {
             </button>
           )}
           <button className='icon'><Link to="/login"><CiUser /></Link></button>
-          <button className='icon'><AiOutlineShopping /></button>
+          <button className='icon'><Link to="/cart"><AiOutlineShopping /></Link></button>
         </div>
       </div>
 

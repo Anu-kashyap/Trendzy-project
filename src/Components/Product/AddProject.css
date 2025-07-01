@@ -1,0 +1,55 @@
+.Add-product{
+    height: 80vh;
+    width: 100%;
+}
+
+.Add-product h2{
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.form-Add-product{
+   width: 40%;
+   margin-left: 30%;
+   margin-top: 2rem;
+   height: 60vh;
+   display: grid;
+   grid-template-columns: auto;
+   gap: 0.6rem;
+}
+
+.form-Add-product input, textarea{
+    border: 0.3px solid black;
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 0.3rem;
+    font-size: 20px;
+}
+
+.form-Add-product button{
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 19px;
+}
+
+.form-Add-product button:hover{
+    background: white;
+    color: black;
+    border: 0.3px solid black;
+}
+
+@media (max-width: 768px){
+    .Add-product{
+        height: 80vh;
+    }
+    .form-Add-product{
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .form-Add-product input, textarea{
+        width: 100%;
+    }
+}

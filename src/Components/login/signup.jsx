@@ -6,16 +6,38 @@ const Signup = () => {
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
 
-  const handleSignup = () => {
-    console.log('Signup Data:', {
-      name: signupName,
-      email: signupEmail,
-      password: signupPassword,
-    });
+  const handleSignup = async (e) => {
+    e.preventDefault(); // ✅ Prevent page reload
+
+    try {
+      const res = await fetch("http://localhost:8080/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: signupName,
+          email: signupEmail,
+          password: signupPassword,
+        }),
+      });
+
+      const data = await res.json();
+      console.log("Signup response:", data);
+
+      if (data.success) {
+        alert("Signup successful!");
+        window.location.href = "/login";
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error("Signup error:", err.message);
+    }
   };
 
   return (
-    <div className='Sign'>
+    <form className='Sign' onSubmit={handleSignup}>
       <p>Sign Up</p>
       <div className="input-box">
         <input type="text" placeholder='Name' value={signupName} onChange={(e) => setSignupName(e.target.value)} />
@@ -30,8 +52,8 @@ const Signup = () => {
         <p>Already have an account?</p>
         <a href="/login">Login Here</a>
       </div>
-      <button onClick={handleSignup}>Register</button>
-    </div>
+      <button type="submit">Register</button>
+    </form>
   );
 };
 

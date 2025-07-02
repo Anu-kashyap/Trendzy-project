@@ -3,10 +3,10 @@ import ProductModel from '../Models/product.js';
 
 export const addProduct = async (req, res) => {
   // Extract data
-  const { name, description, price, image } = req.body;
+  const { name, description, price, image, sizes } = req.body;
 
   // Save to MongoDB
-  const newProduct = new ProductModel({ name, description, price, image });
+  const newProduct = new ProductModel({ name, description, price, image, sizes });
   await newProduct.save();
 
   res.status(201).json({

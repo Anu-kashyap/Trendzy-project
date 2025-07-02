@@ -1,108 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC&display=swap');
 
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #333;
-    padding: 20px;
-    color: white;
+nav.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 25px;
+  background-color: #333;
+  color: white;
+  position: relative;
+  z-index: 100;
 }
 
-nav .logo {
-    font-family: "Bona Nova SC", serif;
-    font-size: 40px;
-    font-weight: bold;
+.logo {
+  font-family: 'Bona Nova SC', serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
 }
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
 }
 
 .nav-links a li {
-    list-style: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px 0;
+  list-style: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 0;
 }
 
-.nav-links a li:hover{
-    border-bottom: 1px solid white;
+.nav-links a li:hover {
+  border-bottom: 2px solid white;
 }
 
 .icon {
-    font-size: 30px;
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.Searchbar {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.Searchbar input {
-    width: 300px;
-    padding: 10px;
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-    border-radius: 9px;
-    font-size: 16px;
-}
-
-.Searchbar button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    margin-left: 10px;
+.icons-mobile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 20px;
 }
 
 .menu-toggle {
-    display: none;
+  display: none;
 }
 
-/* Icons inside menu on mobile */
-.icons-mobile {
-    /* display: none; */
-    flex-direction: row;
-    gap: 3rem;
+.Searchbar {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.Searchbar input {
+  width: 250px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+}
+
+.Searchbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.logout-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  z-index: 999;
+}
+
+.logout-dropdown button {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  nav.container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
     margin-top: 10px;
-}
+    display: none;
+  }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+  .nav-links.open {
+    display: flex;
+  }
 
-    .menu-toggle {
-        display: block;
-        font-size: 30px;
-    }
+  .icons-mobile {
+    justify-content: flex-start;
+    margin-top: 10px;
+    width: 100%;
+  }
 
-    .nav-links {
-        flex-direction: column;
-        width: 100%;
-        display: none;
-        margin-top: 10px;
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .icons-mobile {
-        display: flex;
-    }
+  .Searchbar input {
+    width: 80%;
+  }
 }

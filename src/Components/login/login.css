@@ -64,3 +64,19 @@
     border: none;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px){
+    .login{
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .Sign {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .input-box input{
+        width: 100%;
+    }
+}

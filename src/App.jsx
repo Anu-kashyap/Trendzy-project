@@ -34,14 +34,23 @@ const App = () => {
           </ProtectedRoute>
         } />
 
+        <Route
+          path="/add-product"
+          element={
+            <ProtectedRoute>
+              <AddProduct />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/add-product" element={<AddProduct />} />
 
-        <Route path="/product/:id" element={<ProductDetail />} /> {/* ✅ Route to detail page */}
+
+        <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
 
       <Footer />

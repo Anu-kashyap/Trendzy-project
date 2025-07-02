@@ -6,6 +6,17 @@ const AddProduct = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
+  const [sizes, setSizes] = useState([]); // ✅ Sizes state
+
+  const availableSizes = ['S', 'M', 'L', 'XL'];
+
+  const handleSizeChange = (size) => {
+    if (sizes.includes(size)) {
+      setSizes(sizes.filter(s => s !== size)); // remove
+    } else {
+      setSizes([...sizes, size]); // add
+    }
+  };
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
@@ -16,7 +27,7 @@ const AddProduct = () => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ name, description, price, image })
+        body: JSON.stringify({ name, description, price, image, sizes }) // ✅ include sizes
       });
 
       const data = await res.json();
@@ -27,6 +38,7 @@ const AddProduct = () => {
         setDescription('');
         setPrice('');
         setImage('');
+        setSizes([]);
       } else {
         alert("❌ Failed: " + data.message);
       }
@@ -75,6 +87,25 @@ const AddProduct = () => {
             required
           />
         </div>
+
+        {/* ✅ Size Selection */}
+        <div>
+          <label><strong>Select Sizes:</strong></label>
+          <div style={{ display: 'flex', gap: '10px', marginTop: '8px' }}>
+            {availableSizes.map((size) => (
+              <label key={size}>
+                <input
+                  type="checkbox"
+                  value={size}
+                  checked={sizes.includes(size)}
+                  onChange={() => handleSizeChange(size)}
+                />
+                {size}
+              </label>
+            ))}
+          </div>
+        </div>
+
         <button type="submit">Add Product</button>
       </form>
     </div>

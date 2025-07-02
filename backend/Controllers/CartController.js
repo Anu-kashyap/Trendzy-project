@@ -60,21 +60,25 @@ export const getCartItems = async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    const cartItems = await CartModel.find({ userId }).populate("productId");
-    const validCartItems = cartItems.filter(item => item.productId !== null);
-    res.status(200).json({ success: true, cart: validCartItems });
+    const cart = await CartModel.find({ userId }).populate("productId");
 
+    if (!cart || cart.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No items in cart for this user",
+      }); 
+    }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
-      cart: cartItems,
+      cart,
     });
   } catch (err) {
-    console.error("❌ Error in getCartItems:", err.message);
-    res.status(500).json({
+    console.error("Error in getCartItems:", err.message);
+    return res.status(500).json({
       success: false,
-      message: "Internal Server Error",
-    });
+      message: "Internal server error",
+    }); 
   }
 };
 

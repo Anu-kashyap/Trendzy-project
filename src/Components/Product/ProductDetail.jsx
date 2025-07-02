@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -12,13 +13,10 @@ const ProductDetail = () => {
         const res = await fetch(`http://localhost:8080/products/${id}`);
         const data = await res.json();
         if (data.success) {
-          console.log("✅ Product detail:", data.product);
           setProduct(data.product);
-        } else {
-          console.error("❌ Failed to fetch product:", data.message);
         }
       } catch (err) {
-        console.error("🛑 Error fetching product:", err.message);
+        console.error("Error fetching product:", err.message);
       }
     };
 
@@ -45,18 +43,18 @@ const ProductDetail = () => {
           userId,
           productId: id,
           quantity: 1,
-          size: selectedSize // ✅ Send selected size
+          size: selectedSize
         })
       });
 
       const data = await res.json();
       if (data.success) {
-        alert("✅ Product added to cart!");
+        alert("Product added to cart!");
       } else {
-        alert("❌ Failed to add to cart: " + data.message);
+        alert("Failed to add to cart: " + data.message);
       }
     } catch (err) {
-      console.error("❌ Add to cart error:", err.message);
+      console.error("Add to cart error:", err.message);
       alert("Something went wrong.");
     }
   };
@@ -64,11 +62,11 @@ const ProductDetail = () => {
   if (!product) return <div>Loading...</div>;
 
   return (
-    <div style={{ padding: '20px', width: '80%', marginLeft:'10%' }}>
+    <div className='Product-detail'>
+      <img src={product.image} alt={product.name} />
       <h2>{product.name}</h2>
-      <img src={product.image} alt={product.name} style={{width: '' }} />
       <p><strong>Price:</strong> ₹{product.price}</p>
-      <p style={{ width: '100%'}}><strong>Description:</strong> {product.description}</p>
+      <p style={{ width: '60%' }}><strong>Description:</strong> {product.description}</p>
 
       <div>
         <h4>Select Size:</h4>
@@ -101,19 +99,7 @@ const ProductDetail = () => {
         </div>
       )}
 
-      <button
-        onClick={handleAddToCart}
-        style={{
-          marginTop: '20px',
-          padding: '10px 20px',
-          fontSize: '16px',
-          backgroundColor: '#007bff',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer'
-        }}
-      >
+      <button onClick={handleAddToCart} className='Cart-button'>
         Add to Cart
       </button>
     </div>

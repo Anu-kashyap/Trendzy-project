@@ -6,39 +6,35 @@ const Login = () => {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
-  // ✅ Place your handleLogin function HERE inside the component
   const handleLogin = async () => {
-  try {
-    const res = await fetch("http://localhost:8080/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: loginEmail,
-        password: loginPassword,
-      }),
-    });
+    try {
+      const res = await fetch("https://your-backend-url.onrender.com/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: loginEmail,
+          password: loginPassword,
+        }),
+      });
 
-    const data = await res.json();
-    console.log("Login response:", data);
+      const data = await res.json();
+      console.log("Login response:", data);
 
-    if (data.success) {
-      localStorage.setItem("jwtToken", data.jwtToken);
-      localStorage.setItem("userId", data.userId); // ✅ Save the actual userId
-      alert("Login successful!");
-      window.location.href = "/";
-    } else {
-      alert(data.message);
+      if (data.success) {
+        localStorage.setItem("jwtToken", data.jwtToken);
+        localStorage.setItem("userId", data.userId);
+        alert("✅ Login successful!");
+        window.location.href = "/";
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("❌ Something went wrong, try again");
     }
-  } catch (err) {
-    console.error("Login error:", err.message);
-    alert("Something went wrong, Try again");
-  }
-};
-
-
-
+  };
 
   return (
     <div className='login'>

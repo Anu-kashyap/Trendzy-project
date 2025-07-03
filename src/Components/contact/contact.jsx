@@ -17,10 +17,10 @@ const contact = () => {
                         <input type="email" placeholder='Your Email' />
                     </div>
                     <div className="contact-inp">
-                        <input type="password" placeholder='Your Password' />
+                        <input type="text" placeholder='Your Address' />
                     </div>
                     <div className="contact-inp">
-                        <textarea cols="60" rows="5" placeholder='Your Message'></textarea>
+                        <textarea cols="50" rows="5" placeholder='Your Message'></textarea>
                     </div>
                     <button>Submit</button>
                 </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Cart.css'
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -76,7 +77,7 @@ const CartPage = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="Cart-Page" >
       <h2>Your Cart</h2>
 
       {cartItems.length === 0 ? (
@@ -87,20 +88,7 @@ const CartPage = () => {
             <li key={item._id} style={{ marginBottom: "10px" }}>
               <strong>{item.productId?.name || "Unknown Product"}</strong> – ₹
               {item.productId?.price || 0} × {item.quantity}
-              <button
-                onClick={() => handleRemoveItem(item._id)}
-                style={{
-                  marginLeft: "10px",
-                  padding: "5px 10px",
-                  backgroundColor: "red",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer"
-                }}
-              >
-                ❌ Remove
-              </button>
+              <button className="romve-btn" onClick={() => handleRemoveItem(item._id)} > Remove</button>
             </li>
           ))}
         </ul>
@@ -109,35 +97,11 @@ const CartPage = () => {
       <h3>Total: ₹{total}</h3>
 
       {/* Continue Shopping Button */}
-      <button
-        onClick={() => navigate("/product")}
-        style={{
-          marginRight: "10px",
-          padding: "10px 20px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer"
-        }}
-      >
-        🛍️ Continue Shopping
-      </button>
+      <button className="btn1" onClick={() => navigate("/product")} >Continue Shopping </button>
 
       {/* Proceed to Checkout */}
       {cartItems.length > 0 && (
-        <button
-          onClick={handleCheckout}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "green",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer"
-          }}
-        >
-          ✅ Proceed to Checkout
+        <button className="btn2" onClick={handleCheckout} >Proceed to Checkout
         </button>
       )}
     </div>

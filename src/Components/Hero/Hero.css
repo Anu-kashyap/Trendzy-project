@@ -37,6 +37,8 @@
 
 @media (max-width: 920px) {
     .hero{
+        width: 90%;
+        margin-left: 5%;
         display: flex;
         flex-wrap: wrap;
     }

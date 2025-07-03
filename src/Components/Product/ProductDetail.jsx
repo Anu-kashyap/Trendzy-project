@@ -66,7 +66,7 @@ const ProductDetail = () => {
       <img src={product.image} alt={product.name} />
       <h2>{product.name}</h2>
       <p><strong>Price:</strong> ₹{product.price}</p>
-      <p style={{ width: '60%' }}><strong>Description:</strong> {product.description}</p>
+
 
       <div>
         <h4>Select Size:</h4>
@@ -92,6 +92,7 @@ const ProductDetail = () => {
           <p>No sizes available</p>
         )}
       </div>
+      <p className='product-desc'><strong>Description:</strong> {product.description}</p>
 
       {selectedSize && (
         <div style={{ marginTop: "10px" }}>

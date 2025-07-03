@@ -15,6 +15,7 @@
 
 .Cart-button{
     width: 30%;
+    margin-top: 1rem;
     padding: 1rem;
     background: black;
     color: white;
@@ -30,7 +31,18 @@
 }
 
 @media (max-width: 768px){
+    .Product-detail{
+        width: 90%;
+        margin-left: 4%;
+        margin-top: 2rem;
+    }
     .Cart-button{
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 15px;
+    }
+
+    .product-desc{
         width: 100%;
     }
 }

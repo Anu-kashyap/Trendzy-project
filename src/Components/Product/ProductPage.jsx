@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Product.css';
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const fetchProducts = async () => {
     try {
@@ -25,9 +26,18 @@ const ProductPage = () => {
   const searchQuery = new URLSearchParams(location.search).get('search')?.toLowerCase();
   const filteredProducts = searchQuery
     ? products.filter(product =>
-      product.name.toLowerCase().includes(searchQuery)
-    )
+        product.name.toLowerCase().includes(searchQuery)
+      )
     : products;
+
+  const handleCheckout = (id) => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      alert("❌ Please login to proceed to checkout.");
+      return;
+    }
+    navigate(`/product/${id}`);
+  };
 
   return (
     <div className='Product-page'>
@@ -43,9 +53,9 @@ const ProductPage = () => {
                 <h3>{product.name}</h3>
               </Link>
               <p>₹{product.price}</p>
-              <Link to={`/product/${product._id}`}>
-                <button className='Cart-button'>Checkout</button>
-              </Link>
+              <button onClick={() => handleCheckout(product._id)} className='Cart-button'>
+                Checkout
+              </button>
             </div>
           ))
         )}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState('');
@@ -60,7 +61,7 @@ const Login = () => {
       </div>
       <div className="create-account">
         <p>Forgot your password?</p>
-        <a href="/signup">Create Account</a>
+        <Link to="/signup">Create Account</Link>
       </div>
       <button onClick={handleLogin}>Login</button>
     </div>

@@ -12,7 +12,7 @@ const ProductSchema = new mongoose.Schema({
   },
   image: String,
   category: String,
-  sizes: [String], // ✅ Added sizes field here
+  sizes: [String], 
   stock: {
     type: Number,
     default: 1,

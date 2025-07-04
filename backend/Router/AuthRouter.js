@@ -1,7 +1,7 @@
 import express from 'express';
 import { signup, login } from '../Controllers/AuthController.js';
 import { signupValidation, loginValidation } from '../Middlewares/AuthValidation.js';
-import verifyToken from '../MiddlewaresverifyToken.js';
+import verifyToken from '../Middlewares/verifyToken.js';
 
 const router = express.Router();
 

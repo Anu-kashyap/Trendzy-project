@@ -9,7 +9,7 @@ import {
 } from '../Controllers/ProductController.js';
 
 // ✅ Import JWT middleware
-import verifyToken from '../Middleware/verifyToken.js';
+import verifyToken from '../Middlewares/verifyToken.js';
 
 const router = express.Router();
 

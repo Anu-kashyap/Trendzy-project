@@ -11,7 +11,7 @@ const Signup = () => {
     e.preventDefault(); // ✅ Prevent page reload
 
     try {
-      const res = await fetch("http://localhost:8080/auth/signup", {
+      const res = await fetch("https://trendzy-backend.onrender.com/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

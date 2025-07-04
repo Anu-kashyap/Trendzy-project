@@ -10,7 +10,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/products/${id}`);
+        const res = await fetch(`https://trendzy-project-2.onrender.com/products/${id}`);
         const data = await res.json();
         if (data.success) {
           setProduct(data.product);
@@ -36,7 +36,7 @@ const ProductDetail = () => {
     }
 
     try {
-      const res = await fetch(`https://trendzy-project-2.onrender.com/products/${id}`, {
+      const res = await fetch(`https://trendzy-project-2.onrender.com/cart/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -49,7 +49,7 @@ const ProductDetail = () => {
 
       const data = await res.json();
       if (data.success) {
-        alert("Product added to cart!");
+        alert("✅ Product added to cart!");
       } else {
         alert("Failed to add to cart: " + data.message);
       }
@@ -66,7 +66,6 @@ const ProductDetail = () => {
       <img src={product.image} alt={product.name} />
       <h2>{product.name}</h2>
       <p><strong>Price:</strong> ₹{product.price}</p>
-
 
       <div>
         <h4>Select Size:</h4>
@@ -92,6 +91,7 @@ const ProductDetail = () => {
           <p>No sizes available</p>
         )}
       </div>
+
       <p className='product-desc'><strong>Description:</strong> {product.description}</p>
 
       {selectedSize && (

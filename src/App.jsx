@@ -12,7 +12,7 @@ import Contact from './Components/contact/contact';
 import ProductPage from './Components/Product/ProductPage';
 import CartPage from './Components/Product/CartPage';
 import AddProduct from './Components/Product/AddProject';
-import ProductDetail from './Components/Product/ProductDetail'; // ✅ ADDED THIS LINE
+import ProductDetail from './Components/Product/ProductDetail'; 
 import ProtectedRoute from './Components/ProtectedRoute';
 
 const App = () => {

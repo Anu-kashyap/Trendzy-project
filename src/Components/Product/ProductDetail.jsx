@@ -36,7 +36,7 @@ const ProductDetail = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:8080/cart/add", {
+      const res = await fetch(`https://trendzy-project-2.onrender.com/products/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Cart.css'
+import './Cart.css';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -10,13 +10,20 @@ const CartPage = () => {
   useEffect(() => {
     const fetchCart = async () => {
       const userId = localStorage.getItem("userId");
-      if (!userId) {
-        console.error("User ID not found");
+      const token = localStorage.getItem("jwtToken");
+
+      if (!userId || !token) {
+        console.error("User ID or token not found");
         return;
       }
 
       try {
-        const res = await fetch(`http://localhost:8080/cart/${userId}`);
+        const res = await fetch(`https://trendzy-project-2.onrender.com/cart/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
         const data = await res.json();
 
         if (data.success) {
@@ -36,21 +43,31 @@ const CartPage = () => {
       }
     };
 
-    fetchCart(); // ✅ Call inside useEffect
+    fetchCart();
   }, []);
 
   const handleRemoveItem = async (cartItemId) => {
+    const token = localStorage.getItem("jwtToken");
+
     try {
-      const res = await fetch(`http://localhost:8080/cart/remove/${cartItemId}`, {
-        method: "DELETE"
+      const res = await fetch(`https://trendzy-project-2.onrender.com/cart/remove/${cartItemId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
 
       const data = await res.json();
       if (data.success) {
         alert("🗑️ Item removed!");
+
         // Refetch cart after removing
         const userId = localStorage.getItem("userId");
-        const updatedCart = await fetch(`http://localhost:8080/cart/${userId}`);
+        const updatedCart = await fetch(`https://trendzy-project-2.onrender.com/cart/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         const updatedData = await updatedCart.json();
 
         if (updatedData.success) {
@@ -77,7 +94,7 @@ const CartPage = () => {
   };
 
   return (
-    <div className="Cart-Page" >
+    <div className="Cart-Page">
       <h2>Your Cart</h2>
 
       {cartItems.length === 0 ? (
@@ -88,7 +105,7 @@ const CartPage = () => {
             <li key={item._id} style={{ marginBottom: "10px" }}>
               <strong>{item.productId?.name || "Unknown Product"}</strong> – ₹
               {item.productId?.price || 0} × {item.quantity}
-              <button className="romve-btn" onClick={() => handleRemoveItem(item._id)} > Remove</button>
+              <button className="romve-btn" onClick={() => handleRemoveItem(item._id)}>Remove</button>
             </li>
           ))}
         </ul>
@@ -96,13 +113,10 @@ const CartPage = () => {
 
       <h3>Total: ₹{total}</h3>
 
-      {/* Continue Shopping Button */}
-      <button className="btn1" onClick={() => navigate("/product")} >Continue Shopping </button>
+      <button className="btn1" onClick={() => navigate("/product")}>Continue Shopping</button>
 
-      {/* Proceed to Checkout */}
       {cartItems.length > 0 && (
-        <button className="btn2" onClick={handleCheckout} >Proceed to Checkout
-        </button>
+        <button className="btn2" onClick={handleCheckout}>Proceed to Checkout</button>
       )}
     </div>
   );

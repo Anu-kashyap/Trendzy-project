@@ -9,10 +9,20 @@ const ProductPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch("http://localhost:8080/products");
+      const token = localStorage.getItem("jwtToken");
+
+      const res = await fetch("https://trendzy-project-2.onrender.com/products", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       const data = await res.json();
+
       if (data.success) {
         setProducts(data.products);
+      } else {
+        console.error("Failed to load products:", data.message);
       }
     } catch (err) {
       console.error("Fetch error:", err.message);
@@ -26,8 +36,8 @@ const ProductPage = () => {
   const searchQuery = new URLSearchParams(location.search).get('search')?.toLowerCase();
   const filteredProducts = searchQuery
     ? products.filter(product =>
-        product.name.toLowerCase().includes(searchQuery)
-      )
+      product.name.toLowerCase().includes(searchQuery)
+    )
     : products;
 
   const handleCheckout = (id) => {

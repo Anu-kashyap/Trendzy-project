@@ -23,7 +23,7 @@ const Login = () => {
       console.log("Login response:", data);
 
       if (data.success) {
-        localStorage.setItem("jwtToken", data.jwtToken);
+        localStorage.setItem("jwtToken", data.jwtToken);  
         localStorage.setItem("userId", data.userId);
         alert("✅ Login successful!");
         window.location.href = "/";

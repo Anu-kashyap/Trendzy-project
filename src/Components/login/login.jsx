@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("https://trendzy-backend.onrender.com/auth/login", {
+      const res = await fetch("http://localhost:8080/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

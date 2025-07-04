@@ -12,31 +12,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// ✅ Handle JSON data
 app.use(express.json());
+app.use(cors());
 
-// ✅ Enable CORS with options for frontend
-app.use(cors({
-  origin: ['https://trendzy-project-frontend.onrender.com'], 
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],    
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
-
-// ✅ Handle preflight OPTIONS requests
-app.options('*', cors());
-
-// ✅ Routes
-app.use('/auth', AuthRouter);
-app.use('/products', ProductRouter);
 app.use('/cart', CartRouter);
+app.use('/products', ProductRouter);
+app.use('/auth', AuthRouter);
 
-// ✅ Test route
 app.get('/ping', (req, res) => {
   res.send('PONG');
 });
 
-// ✅ Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`Server is running on ${PORT}`);
 });

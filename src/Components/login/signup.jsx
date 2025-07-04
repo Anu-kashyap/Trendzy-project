@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './login.css';
 
 const Signup = () => {
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
-  const navigate = useNavigate(); // ✅ useNavigate hook
 
   const handleSignup = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // ✅ Prevent page reload
 
     try {
-      const res = await fetch("https://trendzy-backend.onrender.com/auth/signup", {
+      const res = await fetch("http://localhost:8080/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,13 +28,12 @@ const Signup = () => {
 
       if (data.success) {
         alert("Signup successful!");
-        navigate("/login"); // ✅ navigate instead of window.location.href
+        window.location.href = "/login";
       } else {
         alert(data.message);
       }
     } catch (err) {
       console.error("Signup error:", err.message);
-      alert("Something went wrong. Please try again.");
     }
   };
 
@@ -43,28 +41,13 @@ const Signup = () => {
     <form className='Sign' onSubmit={handleSignup}>
       <p>Sign Up</p>
       <div className="input-box">
-        <input
-          type="text"
-          placeholder='Name'
-          value={signupName}
-          onChange={(e) => setSignupName(e.target.value)}
-        />
+        <input type="text" placeholder='Name' value={signupName} onChange={(e) => setSignupName(e.target.value)} />
       </div>
       <div className="input-box">
-        <input
-          type="email"
-          placeholder='Email'
-          value={signupEmail}
-          onChange={(e) => setSignupEmail(e.target.value)}
-        />
+        <input type="email" placeholder='Email' value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
       </div>
       <div className="input-box">
-        <input
-          type="password"
-          placeholder='Password'
-          value={signupPassword}
-          onChange={(e) => setSignupPassword(e.target.value)}
-        />
+        <input type="password" placeholder='Password' value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
       </div>
       <div className="login-here">
         <p>Already have an account?</p>

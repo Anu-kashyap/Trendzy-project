@@ -46,3 +46,17 @@
     color: black;
     border: 0.3px solid black;
 }
+
+@media (max-width: 768px){
+    .Cart-Page {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .Cart-Page .btn1,
+    .Cart-Page .btn2,
+    .romve-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

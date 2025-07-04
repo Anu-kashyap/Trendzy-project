@@ -8,7 +8,7 @@ import {
   getSingleProduct
 } from '../Controllers/ProductController.js';
 
-import verifyToken from '../Middlewares/verifyToken.js';
+import verifyToken from '../Middleware/verifyToken.js';
 
 const router = express.Router();
 
